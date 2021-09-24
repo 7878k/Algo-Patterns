@@ -32,7 +32,7 @@ usage: 统计x里面1的个数
 
 
 
-把最低位的1变成0：
+**把最低位的1变成0**：
 
 ```c++
 n & (n - 1)
@@ -40,29 +40,63 @@ n & (n - 1)
 
 
 
-example: 
+**计算/判断**
 
-191. Number of 1 Bits
+ _计算m中1的数量_
 
-     ```java
-     public class Solution {
-         // you need to treat n as an unsigned value
-         public int hammingWeight(int n) {
-             int res = 0;
-             
-             while (n != 0) {
-                 n -= lowbit(n); // 每次减去n的最后一位1
-                 res++;
-             }
-             
-             return res;
-         }
-         
-         private int lowbit(int x) {
-             return x & -x;
-         }
-     }
-     ```
+```java
+// 191. Number of 1 Bits
+// Time: O(logn); Space: O(1)
 
-     
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int res = 0;
+        
+        while (n != 0) {
+            n -= lowbit(n); // 每次减去n的最后一位1
+            res++;
+        }
+        
+        return res;
+    }
+    
+    private int lowbit(int x) {
+        return x & -x;
+    }
+}
+```
 
+
+
+_判断m是否是2的非负整数次幂_
+
+1. ```c++
+   n & (n - 1) == 0
+   ```
+
+2. ```
+   (n & -n) == n
+   ```
+
+
+
+```java
+// 231. Power of Two
+
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        return n > 0 && ((n & (n -1)) == 0);
+    }
+}
+
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & -n) == n;
+    }
+}
+```
+
+
+
+_删除最低有效位_
