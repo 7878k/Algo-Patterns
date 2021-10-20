@@ -68,7 +68,7 @@ public class Solution {
                 // 下一轮搜索区间是 [mid + 1..right]
                 left = mid + 1;
             } else {
-                // nums[mid] > target，下一轮搜索区间是 [left..mid]
+                // nums[mid] >= target，下一轮搜索区间是 [left..mid]
                 right = mid;
             }
         }

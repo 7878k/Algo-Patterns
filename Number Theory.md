@@ -39,7 +39,7 @@ example:
 class Solution {
     public double myPow(double x, int n) {
         long num = n;
-		// 如果x是负数，指数变复数，然后再去倒数
+		// 如果x是负数，指数变复数，然后再取倒数
         return num > 0 ? fastPow(x, num) : 1.0 / fastPow(x, -num);
     }
     
